@@ -4,8 +4,9 @@
 Профиль
 {% endblock %}
 
-
 {% block body %}
-<p>Профиль</p>
-<a href="/logout" class="btn btn-primary my-2">Выйти</a>
+    <div class="col-lg-8">
+
+    </div>
+    {% include 'Main/profile_sidebar.html' with posts=form %}
 {% endblock %}
