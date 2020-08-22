@@ -1,17 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
-class User(models.Model):
-    status = models.IntegerField(default='0')
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    login = models.CharField(max_length=20)
-    password = models.CharField(max_length=32)
-
-    name = models.CharField(max_length=50)
-    surname = models.CharField(max_length=50)
-    patronymic = models.CharField(max_length=50)
-
-    numberRequestEGRN = models.IntegerField()
-
+    def __str__(self):
+        return f'{self.user.username} Profile'
 
 
