@@ -11,7 +11,8 @@
     <div class="list-group">
         {% if votes %}
         {% for v in votes %}
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <a class="list-group-item list-group-item-action flex-column align-items-start"
+           data-target="#vote" data-whatever="@mdo" data-toggle="modal">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{v.title}}</h5>
                 <small>23 минуты назад</small>
@@ -23,6 +24,36 @@
         {% else %}
         <p>Пока что нет активных голосований</p>
         {% endif %}
+    </div>
+    <div class="bd-example">
+        <div class="modal fade" id="vote" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Голосовать</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col-sm">
+                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Не
+                                согласен
+                            </button>
+                        </div>
+                        <div class="col-sm">
+                            <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Согласен
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% include 'Main/profile_sidebar.html' %}

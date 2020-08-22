@@ -10,7 +10,7 @@
     <br>
     <form method="post">
         {% csrf_token %}
-        {{ form.title }}
+        {{ form.title }}<br>
         {{ form.details }}
         {% if msg is not 'none'%}
             {% if msg == 'OK' %}
