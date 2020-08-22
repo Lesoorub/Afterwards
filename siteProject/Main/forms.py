@@ -7,6 +7,7 @@ class UserForm(ModelForm):
     class Meta:
         model = User
         fields = ["username", "password"]
+        exclude = ['start_user']
         widgets = {
             "username": TextInput(attrs={
                 'class': 'form-control',
@@ -26,8 +27,16 @@ class UserForm(ModelForm):
 class VoteForm(ModelForm):
     class Meta:
         model = Vote
-        fields = ["title", "details", "start_time"]
+        fields = ["title", "details"]
         widgets = {
-            "title": TextInput(attrs={}),
-            "details": Textarea(attrs={})
+            "title": TextInput(attrs={
+                'type': 'text',
+                'placeholder': 'Заголовок',
+                'class': 'form-control'
+            }),
+            "details": Textarea(attrs={
+                'type': 'text',
+                'placeholder': 'Детали',
+                'class': 'form-control'
+            })
         }

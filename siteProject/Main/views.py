@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserForm
+from .models import Vote
+from .forms import UserForm, VoteForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, logout, login
+from django.contrib.auth.models import User
+from datetime import datetime
 
 
 def index(request):
@@ -69,7 +72,8 @@ def profile_Discussions(request):
 def profile_Votes(request):
     if not request.user.is_authenticated:
         return redirect('auth')
-    return render(request, 'main/Votes.html')
+    votes = Vote.objects.all()
+    return render(request, 'main/Votes.html', {'votes': votes})
 
 
 @login_required
@@ -83,4 +87,22 @@ def profile_Setting(request):
 def profile_NewVote(request):
     if not request.user.is_authenticated:
         return redirect('auth')
-    return render(request, 'main/NewVote.html')
+    msg = 'none'
+    if request.method == 'POST':
+        form = VoteForm(request.POST)
+        if form.is_valid():
+            t = form.save(commit=False)
+            t.start_user = User.objects.get(pk=request.user.id)
+            t.save()
+            msg = 'OK'
+        else:
+            msg = 'NO'
+    else:
+        form = VoteForm()
+
+    context = {
+        'form': form,
+        'msg': msg
+    }
+
+    return render(request, 'main/NewVote.html', context)

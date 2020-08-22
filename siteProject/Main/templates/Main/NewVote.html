@@ -5,8 +5,30 @@
 {% endblock %}
 
 {% block body %}
-    <div class="col-lg-8">
-
-    </div>
-    {% include 'Main/profile_sidebar.html' %}
+<div class="col-lg-8">
+    <h4>Новое голосование</h4>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title }}
+        {{ form.details }}
+        {% if msg is not 'none'%}
+            {% if msg == 'OK' %}
+                <div class="alert alert-warning mt-2">
+                    <span>Новое голосование успешно созданно</span>
+                </div>
+            {% endif %}
+            {% if msg == 'NO' %}
+                <div class="alert alert-warning mt-2">
+                    <span>Ошибка</span>
+                </div>
+            {% endif %}
+            {% if msg == 'none' %}
+            <br>
+            {% endif %}
+        {% endif %}
+        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Создать голосование">
+    </form>
+</div>
+{% include 'Main/profile_sidebar.html' %}
 {% endblock %}
