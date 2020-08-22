@@ -13,5 +13,6 @@ urlpatterns = [
     path('Discussions', views.profile_Discussions, name='Discussions'),
     path('Votes', views.profile_Votes, name='Votes'),
     path('Setting', views.profile_Setting, name='Setting'),
+    path('NewVote', views.profile_NewVote, name='NewVote'),
     path('', views.index, name='home')
 ]

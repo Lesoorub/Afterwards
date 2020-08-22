@@ -5,8 +5,22 @@
 {% endblock %}
 
 {% block body %}
-    <div class="col-lg-8">
-Discussions
-    </div>
-    {% include 'Main/profile_sidebar.html' %}
+<div class="col-lg-8">
+    <h4>Активные обсуждения</h4>
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Покраска лавочек
+            <span class="badge badge-primary badge-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Новые окна
+            <span class="badge badge-primary badge-pill">2</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Домофон
+            <span class="badge badge-primary badge-pill">1</span>
+        </li>
+    </ul>
+</div>
+{% include 'Main/profile_sidebar.html' %}
 {% endblock %}

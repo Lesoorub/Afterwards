@@ -77,3 +77,10 @@ def profile_Setting(request):
     if not request.user.is_authenticated:
         return redirect('auth')
     return render(request, 'main/Setting.html')
+
+
+@login_required
+def profile_NewVote(request):
+    if not request.user.is_authenticated:
+        return redirect('auth')
+    return render(request, 'main/NewVote.html')

@@ -5,8 +5,35 @@
 {% endblock %}
 
 {% block body %}
-    <div class="col-lg-8">
-Votes
+<div class="col-lg-8">
+    <h4>Активные</h4>
+    <p>Любое голосование длится 2-е суток.</p>
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Построить мост к дому номер 8 и обустроить его</h5>
+                <small>23 минуты назад</small>
+            </div>
+            <p class="mb-1">По инициативе соседей в доме на против мы ... </p>
+            <small>Подробнее >></small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Подстричь кусты</h5>
+                <small class="text-muted">14 часов и 36 минут назад</small>
+            </div>
+            <p class="mb-1">Кусты сильно разраслись и жуют жителей дома, нужно всего лишь ...</p>
+            <small class="text-muted">Подробнее >></small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Устаносить новый шлакбаун</h5>
+                <small class="text-muted">1 день и 18 часов назад</small>
+            </div>
+            <p class="mb-1">Из-за того что шлакбаун снесла машина и теперь могут порковаться кто угодно ...</p>
+            <small class="text-muted">Подробнее >></small>
+        </a>
     </div>
-    {% include 'Main/profile_sidebar.html' %}
+</div>
+{% include 'Main/profile_sidebar.html' %}
 {% endblock %}

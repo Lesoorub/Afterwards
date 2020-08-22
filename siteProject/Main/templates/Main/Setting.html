@@ -5,8 +5,95 @@
 {% endblock %}
 
 {% block body %}
-    <div class="col-lg-8">
-Setting
+<div class="col-lg-8">
+    <H4>Место проживания</H4>
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action">Буденноск, ул. Пушкинская 8</a>
+        <a href="#" class="list-group-item list-group-item-action">Москва, ул. Советская 4</a>
+        <a href="#" class="list-group-item list-group-item-action">Мытищи, ул. Приморская 32</a>
+        <a href="#" class="list-group-item list-group-item-action">Ростов-на-Дону, ул. Пушкинская 51</a>
+        <a href="#" class="list-group-item list-group-item-action active">Новочеркасск, ул. Энгельса 85 a, кв 521</a>
+        <br>
     </div>
-    {% include 'Main/profile_sidebar.html' %}
+    <H4>Добавить</H4>
+    <div class="input-group mb-3">
+        <select class="custom-select" id="inputGroupSelect00">
+            <option selected>Выберите</option>
+            <option>Амурская</option>
+            <option>Архангельская</option>
+            <option>Астраханская</option>
+            <option>Белгородская</option>
+            <option>Брянская</option>
+            <option>Челябинская</option>
+            <option>Иркутская</option>
+            <option>Ивановская</option>
+            <option>Калининградская</option>
+            <option>Калужская</option>
+            <option>Кемеровская</option>
+            <option>Кировская</option>
+            <option>Костромская</option>
+            <option>Курганская</option>
+            <option>Курская</option>
+            <option>Ленинградская</option>
+            <option>Липецкая область</option>
+            <option>Магаданская</option>
+            <option>Московская</option>
+            <option>Мурманская</option>
+            <option>Нижегородская</option>
+            <option>Новгородская</option>
+            <option>Новосибирская</option>
+            <option>Омская</option>
+            <option>Оренбургская</option>
+            <option>Орловская</option>
+            <option>Пензенская</option>
+            <option>Псковская</option>
+            <option>Ростовская</option>
+            <option>Рязанская</option>
+            <option>Сахалинская</option>
+            <option>Самарская</option>
+            <option>Саратовская</option>
+            <option>Смоленская</option>
+            <option>Свердловская</option>
+            <option>Тамбовская</option>
+            <option>Томская</option>
+            <option>Тверская</option>
+            <option>Тульская</option>
+            <option>Тюменская</option>
+            <option>Ульяновская</option>
+            <option>Владимирская</option>
+            <option>Волгоградская</option>
+            <option>Вологодская</option>
+            <option>Воронежская</option>
+            <option>Ярославская</option>
+        </select>
+        <div class="input-group-append">
+            <label class="input-group-text" for="inputGroupSelect00">область</label>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Город</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01">
+            <option selected>Выберите</option>
+            <option>Москва</option>
+            <option>Санкт-Петербург</option>
+            <option>Екатиринбург</option>
+            <option>Новочеркасск</option>
+            <option>Ростов на дону</option>
+        </select>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect02">Улица</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect02">
+            <option selected>Выберите</option>
+            <option>Пушкинская</option>
+        </select>
+    </div>
+    <input type="text" placeholder="Дом" class="form-control"><br>
+    <a type="button" href="/Setting" class="btn btn-primary">Добавить</a>
+</div>
+{% include 'Main/profile_sidebar.html' %}
 {% endblock %}
