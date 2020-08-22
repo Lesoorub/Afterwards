@@ -7,15 +7,19 @@ Python -> https://www.python.org/
 Django -> $ pip install Django
 
 # How to start server
-Windows
+
+#Windows
+
 Open start.bat batchfile or open powershell in current directory:
 $ python manage.py runserver
 
-Linux 
+#Linux 
+
 Open powershell in current directory:
 $ python manage.py runserver
 
-Mac OS
+#Mac OS
+
 Open powershell in current directory:
 $ python3 manage.py runserver
 
