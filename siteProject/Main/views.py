@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Vote
-from .forms import UserForm, VoteForm
+from .forms import UserForm, VoteForm, ChangeVoteForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.models import User
@@ -73,15 +73,23 @@ def profile_Votes(request):
     if not request.user.is_authenticated:
         return redirect('auth')
     votes = Vote.objects.all()
-
-    if request.method == 'post':
-        print('post')
-        pass
-
+    totalusers = 300
+    form2 = ChangeVoteForm()
+    if request.method == 'POST':
+        vote = votes[int(request.POST['id']) - 1]
+        if request.POST['vote'] == 'yes':
+            vote.accepts += 1
+            vote.canvote = False
+            vote.save()
+        else:
+            vote.de_accepts += 1
+            vote.canvote = False
+            vote.save()
     context = {
-        'votes': votes
+        'votes': votes,
+        'form': form2,
+        'totalusers': totalusers
     }
-
     return render(request, 'main/Votes.html', context)
 
 

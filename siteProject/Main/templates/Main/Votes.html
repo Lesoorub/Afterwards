@@ -1,5 +1,6 @@
 {% extends 'Main/header.html' %}
 
+{% load mathfilters %}
 {% block title %}
 Профиль
 {% endblock %}
@@ -8,22 +9,37 @@
 <div class="col-lg-8">
     <h4>Активные</h4>
     <p>Любое голосование длится 2-е суток.</p>
+    <p>Всего жильцов: {{totalusers}}</p>
     <div class="list-group">
         {% if votes %}
         {% for v in votes %}
-        <a class="list-group-item list-group-item-action flex-column align-items-start"
-           data-target="#vote{{v.id}}" data-whatever="@mdo" data-toggle="modal">
+        <a class="list-group-item list-group-item-action flex-column align-items-start {% if v.canvote %}{%else%}disabled{% endif %}"
+           data-target="#vote"
+           data-details="{{ v.details }}" data-title="{{ v.title }}" data-toggle="modal" data-id="{{v.id}}">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{ v.title }}</h5>
                 <small>{{ v.start_time }}</small>
             </div>
-            <p class="mb-1">{{ v.details }}</p>
-            <small>Подробнее >></small>
+            <p class="mb-1"
+               style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
+                {{v.details}}</p>
+            <div class="d-flex w-100 justify-content-between">
+                <small>Подробнее >></small>
+                <div>
+                    {% with a=v.accepts b=v.de_accepts c=totalusers %}
+                    <small class="text-success">За: {{a}}</small>
+                    {% with d=a|div:c|mul:100 %}
+                    <small class="text-dark">{{d|floatformat }}%</small>
+                    {% endwith %}
+                    <small class="text-danger">Против: {{b}}</small>
+                    {% endwith %}
+                </div>
+            </div>
         </a>
+        {% endfor %}
 
         <div class="bd-example">
-            <div class="modal fade" id="vote{{v.id}}" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="vote" tabindex="-1" role="dialog" aria-labelledby="voteModal"
                  aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -35,21 +51,24 @@
                         </div>
                         <div class="modal-body">
                             <div>
-                                <p>{{ v.title }}</p>
-                                <p>{{ v.details }}</p>
+                                <p class="title">Заголовок</p>
+                                <p class="details">Описание</p>
                             </div>
                         </div>
-                        <form method="post">
+                        <form method="post" action="/Votes">
+                            {% csrf_token %}
+                            <input type="hidden" name="vote" value="none">
+                            <input type="hidden" name="id" value="-1" id="voteID">
                             <div class="modal-footer">
                                 <div class="col-sm">
                                     <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal"
-                                            type="submit">
+                                            data-vote="no">
                                         Не согласен
                                     </button>
                                 </div>
                                 <div class="col-sm">
                                     <button type="button" class="btn btn-primary btn-block" data-dismiss="modal"
-                                            type="submit">
+                                            data-vote="yes">
                                         Согласен
                                     </button>
                                 </div>
@@ -59,7 +78,28 @@
                 </div>
             </div>
         </div>
-        {% endfor %}
+        <script>
+            $('.modal').on('show.bs.modal', function (event) {
+                let button = $(event.relatedTarget)
+                let title = button.data('title')
+                let details = button.data('details')
+                let id = button.data('id')
+
+                let modal = $(this)
+
+                modal.find('input#voteID').val(id)
+                modal.find('.title').text(title)
+                modal.find('.details').text(details)
+            })
+            $('.modal button.btn-block').on('click', function () {
+                $('.modal input[name="vote"]').val($(this).data('vote'))
+                $('.modal form').submit()
+            })
+
+
+
+
+        </script>
         {% else %}
         <p>Пока что нет активных голосований</p>
         {% endif %}

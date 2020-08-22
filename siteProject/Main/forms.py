@@ -40,3 +40,9 @@ class VoteForm(ModelForm):
                 'class': 'form-control'
             })
         }
+
+
+class ChangeVoteForm(ModelForm):
+    class Meta:
+        model = Vote
+        fields = ["accepts", "details"]
