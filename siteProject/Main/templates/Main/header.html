@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="ru">
     <head>
@@ -20,7 +21,12 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                     -->
+
+              {% if user.is_authenticated %}
+                <a class="btn btn-outline-primary" href="{% url 'profile' %}">Профиль</a>
+              {% else %}
                 <a class="btn btn-outline-primary" href="{% url 'auth' %}">Авторизация</a>
+              {% endif %}
                 </div>
             </div>
         </div>

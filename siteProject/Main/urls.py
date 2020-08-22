@@ -8,5 +8,7 @@ urlpatterns = [
     path('TransparentVotingSystem', views.TransparentVotingSystem, name='TransparentVotingSystem'),
     path('ConvenienceAndSimplicity', views.ConvenienceAndSimplicity, name='ConvenienceAndSimplicity'),
     path('UniversalNotification', views.UniversalNotification, name='UniversalNotification'),
+    path('profile', views.profile, name='profile'),
+    path('logout', views.logout_view, name='logout'),
     path('', views.index, name='home')
 ]
