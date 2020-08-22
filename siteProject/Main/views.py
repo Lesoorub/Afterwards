@@ -73,7 +73,16 @@ def profile_Votes(request):
     if not request.user.is_authenticated:
         return redirect('auth')
     votes = Vote.objects.all()
-    return render(request, 'main/Votes.html', {'votes': votes})
+
+    if request.method == 'post':
+        print('post')
+        pass
+
+    context = {
+        'votes': votes
+    }
+
+    return render(request, 'main/Votes.html', context)
 
 
 @login_required

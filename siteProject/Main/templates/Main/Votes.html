@@ -12,48 +12,57 @@
         {% if votes %}
         {% for v in votes %}
         <a class="list-group-item list-group-item-action flex-column align-items-start"
-           data-target="#vote" data-whatever="@mdo" data-toggle="modal">
+           data-target="#vote{{v.id}}" data-whatever="@mdo" data-toggle="modal">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{v.title}}</h5>
-                <small>23 минуты назад</small>
+                <h5 class="mb-1">{{ v.title }}</h5>
+                <small>{{ v.start_time }}</small>
             </div>
             <p class="mb-1">{{ v.details }}</p>
             <small>Подробнее >></small>
         </a>
-        {% endfor %}
-        {% else %}
-        <p>Пока что нет активных голосований</p>
-        {% endif %}
-    </div>
-    <div class="bd-example">
-        <div class="modal fade" id="vote" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLabel">Голосовать</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
+
+        <div class="bd-example">
+            <div class="modal fade" id="vote{{v.id}}" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel">Голосовать</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <p>{{ v.title }}</p>
+                                <p>{{ v.details }}</p>
+                            </div>
+                        </div>
+                        <form method="post">
+                            <div class="modal-footer">
+                                <div class="col-sm">
+                                    <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal"
+                                            type="submit">
+                                        Не согласен
+                                    </button>
+                                </div>
+                                <div class="col-sm">
+                                    <button type="button" class="btn btn-primary btn-block" data-dismiss="modal"
+                                            type="submit">
+                                        Согласен
+                                    </button>
+                                </div>
+                            </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="col-sm">
-                            <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Не
-                                согласен
-                            </button>
-                        </div>
-                        <div class="col-sm">
-                            <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Согласен
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        {% endfor %}
+        {% else %}
+        <p>Пока что нет активных голосований</p>
+        {% endif %}
     </div>
 </div>
 {% include 'Main/profile_sidebar.html' %}
