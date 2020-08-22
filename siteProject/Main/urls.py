@@ -10,5 +10,8 @@ urlpatterns = [
     path('UniversalNotification', views.UniversalNotification, name='UniversalNotification'),
     path('profile', views.profile, name='profile'),
     path('logout', views.logout_view, name='logout'),
+    path('Discussions', views.profile_Discussions, name='Discussions'),
+    path('Votes', views.profile_Votes, name='Votes'),
+    path('Setting', views.profile_Setting, name='Setting'),
     path('', views.index, name='home')
 ]

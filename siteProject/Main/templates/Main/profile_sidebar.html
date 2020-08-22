@@ -1,9 +1,26 @@
 <div class="col-lg-4">
     <div class="card border-0 shadow mb-4 d-none d-lg-block">
         <div class="card-body">
-            <a type="button" href="#" class="btn btn-primary btn-block">Обсуждения</a>
-            <a type="button" href="#" class="btn btn-outline-primary btn-block">Голосования</a>
-            <a type="button" href="#" class="btn btn-outline-primary btn-block">Настройки</a>
+            {% if 'Discussions' in request.path %}
+            <a type="button" href="/Discussions" class="btn btn-primary btn-block">Обсуждения</a>
+            {% else %}
+            <a type="button" href="/Discussions" class="btn btn-outline-primary btn-block">Обсуждения</a>
+            {% endif %}
+
+            {% if 'Votes' in request.path %}
+            <a type="button" href="/Votes" class="btn btn-primary btn-block">Голосования</a>
+            {% else %}
+            <a type="button" href="/Votes" class="btn btn-outline-primary btn-block">Голосования</a>
+            {% endif %}
+
+            {% if 'Setting' in request.path %}
+            <a type="button" href="/Setting" class="btn btn-primary btn-block">Настройки</a>
+            {% else %}
+            <a type="button" href="/Setting" class="btn btn-outline-primary btn-block">Настройки</a>
+            {% endif %}
+
+            <hr>
+            <a type="button" href="NewVote" class="btn btn-warning btn-block">Новое голосование</a>
             <hr>
             <a type="button" href="/logout" class="btn btn-danger btn-block">Выйти</a>
         </div>

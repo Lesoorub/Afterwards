@@ -56,3 +56,24 @@ def profile(request):
     if not request.user.is_authenticated:
         return redirect('auth')
     return render(request, 'main/profile.html')
+
+
+@login_required
+def profile_Discussions(request):
+    if not request.user.is_authenticated:
+        return redirect('auth')
+    return render(request, 'main/Discussions.html')
+
+
+@login_required
+def profile_Votes(request):
+    if not request.user.is_authenticated:
+        return redirect('auth')
+    return render(request, 'main/Votes.html')
+
+
+@login_required
+def profile_Setting(request):
+    if not request.user.is_authenticated:
+        return redirect('auth')
+    return render(request, 'main/Setting.html')
