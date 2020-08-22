@@ -1,13 +1,73 @@
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0">
-          <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Main</title>
-</head>
-<body>
- <h1>Hello</h1>
-</body>
-</html>
+{% extends 'Main/header.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+
+{% block body %}
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+      <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="header-container container-fluid">
+          <div class="page-header">
+            <div class="fadeIn first">
+            <h4 >Введите данные для входа</h4>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Login Form -->
+          <div class="row">
+
+        <div class="login-form-container col-md-8">
+          <form action="" method="post">
+            {% csrf_token %}
+            <div>
+                <input type="text" id="login" class="form-control" name="login" placeholder="Логин...">
+
+            </div>
+
+            <div>
+                <input type="password" id="password" class="form-control" name="password" placeholder="Пароль...">
+            </div>
+            <div>
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Вход">
+            </div>
+          </form>
+        </div>
+        <div class="col-md-3">
+            <form action="" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-light" value="Авторизация в ЕСИА">
+       </form>
+        </div>
+              </div>
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+          {% if error_login %}
+            <div class="text-danger">
+                Проверьте введеный логин и пароль!
+            </div>
+            <hr>
+          {% endif %}
+          <div class="container content-footer-container">
+            <div id="copyright-footer" class="text-left float-left">
+              <small>&copy; Afterwards, 2020 г.</small>
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+        </div>
+{% endblock %}
