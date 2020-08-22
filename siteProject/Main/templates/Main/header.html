@@ -9,18 +9,30 @@
     <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap shadow">
             <div class="container d-flex justify-content-between">
                 <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center">
                     <strong>ЖКХ "Глав-Строй"</strong>
                 </a>
+                <div>
+                    <!--
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                    -->
+                <a class="btn btn-outline-primary" href="{% url 'auth' %}">Авторизация</a>
+                </div>
             </div>
         </div>
-        <div class="container jumbotron"">
+        <div class="container jumbotron">
             {% block body %}{% endblock %}
         </div>
+          <div class="container content-footer-container">
+            <div id="copyright-footer" class="text-left float-left">
+              <small>&copy; Afterwards, 2020 г.</small>
+            </div>
+
+
+          </div>
     </body>
 </html>

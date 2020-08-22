@@ -6,68 +6,34 @@
 
 
 {% block body %}
-    <div class="panel panel-default">
-        <div class="panel-body">
-
-      <div id="formContent">
-        <!-- Tabs Titles -->
-
-        <!-- Icon -->
-        <div class="header-container container-fluid">
-          <div class="page-header">
-            <div class="fadeIn first">
-            <h4 >Введите данные для входа</h4>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- Login Form -->
-          <div class="row">
-
-        <div class="login-form-container col-md-8">
-          <form action="" method="post">
-            {% csrf_token %}
-            <div>
-                <input type="text" id="login" class="form-control" name="login" placeholder="Логин...">
-
-            </div>
-
-            <div>
-                <input type="password" id="password" class="form-control" name="password" placeholder="Пароль...">
-            </div>
-            <div>
-                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Вход">
-            </div>
-          </form>
-        </div>
-        <div class="col-md-3">
-            <form action="" method="post">
-            {% csrf_token %}
-            <input type="submit" class="btn btn-light" value="Авторизация в ЕСИА">
-       </form>
-        </div>
-              </div>
-        <!-- Remind Passowrd -->
-        <div id="formFooter">
-          {% if error_login %}
-            <div class="text-danger">
-                Проверьте введеный логин и пароль!
-            </div>
-            <hr>
-          {% endif %}
-          <div class="container content-footer-container">
-            <div id="copyright-footer" class="text-left float-left">
-              <small>&copy; Afterwards, 2020 г.</small>
-            </div>
-
-
-          </div>
-
-        </div>
-
+<div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Умная система голосования</h1>
+      <p>Эта система представляет собой замену очной улучшение существующей онлайн системы голосования по важным вопросам связанных с ЖКХ.</p>
+      <p><a class="btn btn-primary btn-lg" href="/more-about-us" role="button">Узнать больше</a></p>
+    </div>
+  </div>
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Прозрачная система голосования</h2>
+        <p>Использование в качестве определения личности систему ЕСИА мы можем в уверено утверждать что ваш голос не будет украден или с фальсифицирован.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">Подробнее ...</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Удобство и простота</h2>
+        <p>Весь сайт сделан так что бы каждый смог разобраться с ним, включая тех кто видет компьютер в первый раз. Так же на сайте существует раздел для помощи в обучении цифровой грамотности, в котором описаны базовые принципы и способы работы с сайтом. </p>
+        <p><a class="btn btn-secondary" href="#" role="button">Подробнее ...</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Повсеместное оповещение</h2>
+        <p>Что бы не пропустить новое голосование по вопросам вашего дома мы создали ботов во всех популярных соц. сетях таких как VK, Instagram, Discord, Whats App, Telegram, ОК, Аська, а так же СМС рассылку для тех кого нет в соц. сетях.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">Подробнее ...</a></p>
       </div>
     </div>
 
-        </div>
+    <hr>
+
+  </div>
 {% endblock %}
