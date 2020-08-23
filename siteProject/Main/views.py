@@ -73,18 +73,29 @@ def profile_Votes(request):
     if not request.user.is_authenticated:
         return redirect('auth')
     votes = Vote.objects.all()
+    for v in votes:
+        v.canvote = True
+        v.save()
     totalusers = 300
     form2 = ChangeVoteForm()
     if request.method == 'POST':
         vote = votes[int(request.POST['id']) - 1]
         if request.POST['vote'] == 'yes':
             vote.accepts += 1
-            vote.canvote = False
+            vote.voters.add(User.objects.get(pk=request.user.pk))
             vote.save()
+            return redirect('Votes')
         else:
             vote.de_accepts += 1
-            vote.canvote = False
+            vote.voters.add(User.objects.get(pk=request.user.pk))
             vote.save()
+            return redirect('Votes')
+
+    for v in votes:
+        for u in v.voters.all():
+            if u.id == request.user.id:
+                v.canvote = False
+
     context = {
         'votes': votes,
         'form': form2,

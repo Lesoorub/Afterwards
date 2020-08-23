@@ -11,6 +11,7 @@ class Vote(models.Model):
     accepts = models.BigIntegerField('За', default=0)
     de_accepts = models.BigIntegerField('Против', default=0)
     canvote = models.BooleanField('can vote', default=True)
+    voters = models.ManyToManyField(User, default=[start_user], related_name="vaters")
 
     def __str__(self):
         return f'{self.title} vote'
