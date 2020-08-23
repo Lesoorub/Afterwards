@@ -9,7 +9,7 @@ from datetime import datetime
 
 
 def index(request):
-    return render(request, 'main/index.html')
+    return render(request, 'Main/index.html')
 
 
 def auth(request):
@@ -30,23 +30,23 @@ def auth(request):
         'form': form,
         'error_login': error_login
     }
-    return render(request, 'main/auth.html', context)
+    return render(request, 'Main/auth.html', context)
 
 
 def moreaboutus(request):
-    return render(request, 'main/more-about-us.html')
+    return render(request, 'Main/more-about-us.html')
 
 
 def TransparentVotingSystem(request):
-    return render(request, 'main/TransparentVotingSystem.html')
+    return render(request, 'Main/TransparentVotingSystem.html')
 
 
 def ConvenienceAndSimplicity(request):
-    return render(request, 'main/ConvenienceAndSimplicity.html')
+    return render(request, 'Main/ConvenienceAndSimplicity.html')
 
 
 def UniversalNotification(request):
-    return render(request, 'main/UniversalNotification.html')
+    return render(request, 'Main/UniversalNotification.html')
 
 
 def logout_view(request):
@@ -58,14 +58,14 @@ def logout_view(request):
 def profile(request):
     if not request.user.is_authenticated:
         return redirect('auth')
-    return render(request, 'main/profile.html')
+    return render(request, 'Main/profile.html')
 
 
 @login_required
 def profile_Discussions(request):
     if not request.user.is_authenticated:
         return redirect('auth')
-    return render(request, 'main/Discussions.html')
+    return render(request, 'Main/Discussions.html')
 
 
 @login_required
@@ -90,14 +90,14 @@ def profile_Votes(request):
         'form': form2,
         'totalusers': totalusers
     }
-    return render(request, 'main/Votes.html', context)
+    return render(request, 'Main/Votes.html', context)
 
 
 @login_required
 def profile_Setting(request):
     if not request.user.is_authenticated:
         return redirect('auth')
-    return render(request, 'main/Setting.html')
+    return render(request, 'Main/Setting.html')
 
 
 @login_required
@@ -122,4 +122,4 @@ def profile_NewVote(request):
         'msg': msg
     }
 
-    return render(request, 'main/NewVote.html', context)
+    return render(request, 'Main/NewVote.html', context)
